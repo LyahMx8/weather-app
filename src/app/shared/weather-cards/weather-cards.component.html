@@ -1,0 +1,53 @@
+<section class="location-cards">
+    <owl-carousel-o [options]="carouselOptions">
+
+        <ng-container *ngFor="let weatherDay of weather?.daily; let i = index">
+            <ng-template carouselSlide [id]="i">
+                <section class="weather-cards">
+                    <section class="location-weather">
+                        <div class="country-weather-img">
+                            <ng-container *ngFor="let weatherImage of weatherDay?.weather">
+                                <img src="https://openweathermap.org/img/wn/{{weatherImage?.icon}}@2x.png" alt="{{weatherImage?.description}}">
+                            </ng-container>
+                        </div>
+                        <div class="weather-temp">
+                            <h3>{{weatherDay?.temp.min | number: '1.0-0'}}</h3>
+                            <span>°C</span>
+                        </div>
+                        <p class="weather-country">
+                            <strong>{{weather?.timezone}}</strong> {{weatherDay?.dt * 1000 | date:'EEEE'}}
+                        </p>
+                    </section>
+                    <section class="weather-details">
+                        <p>Humidity: {{weatherDay?.humidity}}%</p>
+                        <p>{{weatherDay?.wind_deg}}°</p>
+                        <p>{{weatherDay?.wind_speed}}</p>
+                    </section>
+                </section>
+            </ng-template>
+        </ng-container>
+
+    </owl-carousel-o>
+</section>
+
+<section class="add-location">
+    <button (click)="openSearch = true">Add Locations</button>
+    <img src="/assets/images/media/city-location.png" alt="City location market">
+</section>
+
+<div class="close-background" *ngIf="openSearch" (click)="openSearch = false"></div>
+<section *ngIf="openSearch" class="search-form">
+    <h2>Input some country ISO code to check the weather</h2>
+    <input type="search" [(ngModel)]="search" (keyup)="initSearch()" placeholder="Fra, Bel, Col...">
+    <div class="result-search" *ngIf="search?.length >= 3">
+        <div class="content">
+            <span (click)="search = ''"><img src="/assets/images/svg/ic-close.svg"/></span>
+            <div class="noresult" *ngIf="results?.length === 0">
+                There is no results
+            </div>
+            <ul *ngIf="results?.timezone.length > 0">
+                {{results.timezone}}
+            </ul>
+        </div>
+    </div>
+</section>
