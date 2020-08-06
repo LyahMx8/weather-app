@@ -9,6 +9,10 @@
     background-color: var(--white);
     box-shadow: 0 0 3px #dbe0e4;
     border-radius: 32px;
+    @media (max-width: 768px) {
+        border-radius: 0;
+        margin: 0 auto;
+    }
     .weather-resume {
         position: absolute;
         top: 92px;
@@ -143,11 +147,11 @@
         grid-template-columns: 20% 20% 20% 40%;
         padding: 37px 0 0;
         @media(max-width: 856px) {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 50% 50%;
             grid-gap: 10px;
         }
         @media(max-width:480px) {
-            grid-template-columns: 1fr;
+            grid-template-columns: 100%;
         }
         .section-title {
             text-align: center;

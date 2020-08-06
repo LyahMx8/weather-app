@@ -117,9 +117,15 @@
     border-radius: 10px;
     background: var(--white);
     box-shadow: var(--shadow);
+    @media (max-width: 768px) {
+        width: 80%;
+    }
     input {
         border: 1px solid var(--grey);
         border-radius: 5px;
         padding: 5px 10px;
+        @media (max-width: 768px) {
+            width: 90%;
+        }
     }
 }
