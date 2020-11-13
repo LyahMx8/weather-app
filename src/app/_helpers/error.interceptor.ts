@@ -9,6 +9,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     constructor(
         private router: Router
     ) {
+        
     }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

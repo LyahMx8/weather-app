@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
     private weatherService: WeatherService,
     private countriesService: CountriesService,
   ) {
+    
     this.title.setTitle(this.titleTxt);
     // Añadir el tag de la info de la página
     this.meta.addTags([

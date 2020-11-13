@@ -24,3 +24,4 @@ import { SharedModule } from '@core/shared/shared.module';
   ]
 })
 export class PagesModule { }
+

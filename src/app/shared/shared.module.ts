@@ -27,3 +27,4 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
   ]
 })
 export class SharedModule { }
+

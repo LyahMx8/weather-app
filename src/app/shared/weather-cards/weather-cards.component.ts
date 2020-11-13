@@ -44,6 +44,7 @@ export class WeatherCardsComponent implements OnInit {
       })
   }
   
+  
   getWeather(lat,lng){
     this.weatherService.weatherService(lat,lng)
       .subscribe((data: any) => {
