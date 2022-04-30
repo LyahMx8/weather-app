@@ -12,9 +12,9 @@ export class CountriesService {
 
     countries(country){
         if(country){
-            return this.http.get<Country[]>(`https://restcountries.eu/rest/v2/alpha/${country}?fields=name;capital;latlng`);
+            return this.http.get<Country>(`https://restcountries.com/v3.1/alpha/${country}`);
         } else {
-            return this.http.get<Country[]>(`https://restcountries.eu/rest/v2/all?fields=name;capital`);
+            return this.http.get<Country>(`https://restcountries.com/v3.1/all`);
         }
     }
 

@@ -27,7 +27,7 @@ export class WeatherCardsComponent implements OnInit {
   ngOnInit() {
     this.getCountries('col')
   }
-  
+
   getCountries(country){
     this.countriesService.countries(country)
       .subscribe((data: any) => {
@@ -37,20 +37,21 @@ export class WeatherCardsComponent implements OnInit {
             console.log(r)
           })
         }else{
-          this.getWeather(this.countries.latlng[0],this.countries.latlng[1])
+          this.countries.map(elem => {
+            this.getWeather(elem.latlng[0],elem.latlng[1])
+          })
         }
       }, err => {
         console.log(err)
       })
   }
-  
-  
+
+
   getWeather(lat,lng){
     this.weatherService.weatherService(lat,lng)
       .subscribe((data: any) => {
         this.weather = data;
-        console.log(this.weather)
-        this.results = this.weather
+        console.log(data)
       }, err => {
         console.log(err)
       })

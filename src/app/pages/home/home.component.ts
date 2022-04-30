@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
     private weatherService: WeatherService,
     private countriesService: CountriesService,
   ) {
-    
+
     this.title.setTitle(this.titleTxt);
     // Añadir el tag de la info de la página
     this.meta.addTags([
@@ -42,16 +42,16 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.getCountries('col')
   }
-  
+
   getCountries(country){
     this.countriesService.countries(country)
       .subscribe((data: any) => {
-        this.countries = data;
-        var capital = this.eliminarDiacriticos(this.countries.capital)
+        this.countries = data[0];
+        var capital = data[0].capital[0]
         this.getCityCountryImage(capital)
         if(!country){
-          this.countries.map((r:any) => {
-            console.log(r)
+          this.countries.map(elem => {
+            this.getWeather(elem.latlng[0],elem.latlng[1])
           })
         }else{
           this.getWeather(this.countries.latlng[0],this.countries.latlng[1])
@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit {
         console.log(err)
       })
   }
-  
+
   getWeather(lat,lng){
     this.weatherService.weatherService(lat,lng)
       .subscribe((data: any) => {
@@ -72,6 +72,7 @@ export class HomeComponent implements OnInit {
   }
 
   getCityCountryImage(city){
+    city = this.eliminarDiacriticos(city)
     this.countriesService.cityPhotos(city)
       .subscribe((data: any) => {
         this.cityImage = data;
