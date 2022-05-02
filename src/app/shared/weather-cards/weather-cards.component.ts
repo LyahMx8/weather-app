@@ -60,6 +60,7 @@ export class WeatherCardsComponent implements OnInit {
   initSearch() {
       if (this.search && this.search.length >= 3) {
           this.getCountries(this.search)
+          this.openSearch = false
       } else {
           this.results = [];
       }

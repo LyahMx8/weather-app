@@ -13,6 +13,7 @@
         background-color: var(--white);
         box-shadow: var(--shadow);
         margin: 15px;
+        cursor: e-resize;
         .location-weather {
             display: grid;
             grid-template-columns: 30% 20% 40%;
@@ -119,14 +120,25 @@
     box-shadow: var(--shadow);
     @media (max-width: 768px) {
         width: 80%;
-        
     }
-    input {
-        border: 1px solid var(--grey);
-        border-radius: 5px;
-        padding: 5px 10px;
-        @media (max-width: 768px) {
-            width: 90%;
-        }
+
+    .search-input {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      column-gap: 5px;
+      input {
+          border: 1px solid var(--grey);
+          border-radius: 5px;
+          padding: 5px 10px;
+          max-width: 100px;
+          @media (max-width: 768px) {
+              width: 90%;
+          }
+      }
+      .close-search {
+        background-color: transparent;
+        border: none;
+      }
     }
 }

@@ -1,0 +1,23 @@
+<section class="days-forecast">
+  <div class="section-title">
+    <p><strong>3 Days </strong> Forecast</p>
+  </div>
+  <ng-container *ngFor="let weatherDay of weather?.daily; let i = index">
+    <div *ngIf="i<=2" class="daily-card">
+      <ng-container *ngFor="let weatherImage of weatherDay?.weather">
+        <img src="https://openweathermap.org/img/wn/{{weatherImage?.icon}}@2x.png" alt="{{weatherImage?.description}}">
+      </ng-container>
+
+      <div class="daily-captions">
+        <h4>{{weatherDay?.dt * 1000 | date:'EEEE'}}</h4>
+        <ng-container *ngFor="let weatherDescription of weatherDay?.weather">
+          <h5>{{weatherDescription?.description}}</h5>
+        </ng-container>
+      </div>
+
+      <div class="daily-temp" [ngClass]="{'nextDay' : i == 0}">
+        <h4>{{weatherDay?.temp.max | number: '1.0-0'}}° / {{weatherDay?.temp.min | number: '1.0-0'}}°</h4>
+      </div>
+    </div>
+  </ng-container>
+</section>

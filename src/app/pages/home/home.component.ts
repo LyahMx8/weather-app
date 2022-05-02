@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { WeatherService } from '@core/_services/weather.service';
-import { CountriesService } from '@core/_services/countries.service';
 
 @Component({
   selector: 'app-home',
@@ -10,19 +8,11 @@ import { CountriesService } from '@core/_services/countries.service';
 })
 export class HomeComponent implements OnInit {
   public titleTxt = "Home - Weather App"
-  public description = "Weather app es una web app que te muestra el clima desde antes de que suceda"
-
-  public weather:any = []
-  public currentWeather:any = []
-  public countries:any = []
-  public cityImage:any = []
-  public photo:any = []
+  public description = "Weather app es una web app que te muestra el clima antes de que suceda"
 
   constructor(
     private meta: Meta,
-    private title: Title,
-    private weatherService: WeatherService,
-    private countriesService: CountriesService,
+    private title: Title
   ) {
 
     this.title.setTitle(this.titleTxt);
@@ -39,53 +29,8 @@ export class HomeComponent implements OnInit {
     ]);
   }
 
-  ngOnInit() {
-    this.getCountries('col')
+  ngOnInit():void {
   }
 
-  getCountries(country){
-    this.countriesService.countries(country)
-      .subscribe((data: any) => {
-        this.countries = data[0];
-        var capital = data[0].capital[0]
-        this.getCityCountryImage(capital)
-        if(!country){
-          this.countries.map(elem => {
-            this.getWeather(elem.latlng[0],elem.latlng[1])
-          })
-        }else{
-          this.getWeather(this.countries.latlng[0],this.countries.latlng[1])
-        }
-      }, err => {
-        console.log(err)
-      })
-  }
-
-  getWeather(lat,lng){
-    this.weatherService.weatherService(lat,lng)
-      .subscribe((data: any) => {
-        this.weather = data;
-        this.currentWeather = this.weather.current.weather[0];
-      }, err => {
-        console.log(err)
-      })
-  }
-
-  getCityCountryImage(city){
-    city = this.eliminarDiacriticos(city)
-    this.countriesService.cityPhotos(city)
-      .subscribe((data: any) => {
-        this.cityImage = data;
-        this.photo = this.cityImage.photos[0]
-      }, err => {
-        console.log(err)
-      })
-  }
-
-  eliminarDiacriticos(text) {
-    text = text.toLowerCase()
-    text = text.normalize('NFD').replace(/[\u0300-\u036f]/g,"")
-    return text;
-  }
 
 }

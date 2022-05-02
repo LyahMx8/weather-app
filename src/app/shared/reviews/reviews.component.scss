@@ -1,0 +1,94 @@
+.reviews {
+  .reviews__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0;
+    p {
+      font-size: 8px;
+      color: #9f9ea3;
+    }
+    img {
+      width: 16px;
+      height: 16px;
+      object-fit: cover;
+      margin: 2px;
+      border-radius: 3px;
+      &:hover {
+        box-shadow: var(--shadow);
+        cursor: pointer;
+      }
+    }
+    span {
+      display: block;
+      width: 16px;
+      height: 16px;
+      font-size: 10px;
+      text-align: center;
+      background-color: #b5aaef;
+      color: var(--white);
+      border-radius: 3px;
+      &:hover {
+        box-shadow: var(--shadow);
+        cursor: pointer;
+      }
+    }
+  }
+
+  .feature-location {
+    display: block;
+    position: relative;
+    margin: 7px auto;
+    height: 47px;
+    width: 135px;
+    border-radius: 18px;
+    overflow: hidden;
+    @media (max-width: 856px) {
+      width: 100%;
+    }
+    &:hover {
+      box-shadow: var(--shadow);
+      cursor: pointer;
+    }
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    .visitPlace__title {
+      top: 11px;
+      p,
+      strong {
+        font-size: 9px;
+        line-height: 12px;
+      }
+    }
+    .button-add {
+      width: 46px;
+      height: 100%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      border-radius: 18px;
+      background-color: var(--purple);
+      color: var(--white);
+      &:hover {
+        box-shadow: var(--shadow);
+        cursor: pointer;
+      }
+    }
+  }
+
+  .feature-location-2 {
+    height: 94px;
+    margin-top: 21px;
+  }
+}

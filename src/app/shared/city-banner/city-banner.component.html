@@ -1,0 +1,22 @@
+<section class="city-banner">
+  <div class="weather-resume">
+    <div class="weather-icon">
+      <img src="https://openweathermap.org/img/wn/{{currentWeather?.icon}}@2x.png"
+        alt="{{currentWeather?.description}}">
+      <p>{{currentWeather?.main}}</p>
+    </div>
+    <div class="weather-temperature">
+      <h4>{{weather?.current?.temp | number: '1.0-0'}}</h4> <span>°C</span>
+    </div>
+  </div>
+
+  <div class="city-info">
+    <span class="material-icons">location_on</span>
+    <h4>{{countries?.capital}}</h4>
+  </div>
+  <picture class="city-banner__image">
+    <source media="(max-width: 768px)" srcset="{{photo?.image?.mobile}}">
+    <img src="{{photo?.image?.web}}"
+      alt="{{photo?.attribution?.photographer}} {{photo?.attribution?.site}} {{photo?.attribution?.source}}">
+  </picture>
+</section>

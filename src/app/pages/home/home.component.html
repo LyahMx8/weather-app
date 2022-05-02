@@ -1,92 +1,18 @@
 <section class="home">
 
-    <div class="weather-resume">
-        <div class="weather-icon">
-            <img src="https://openweathermap.org/img/wn/{{currentWeather?.icon}}@2x.png" alt="{{currentWeather?.description}}">
-            <p>{{currentWeather?.main}}</p>
-        </div>
-        <div class="weather-temperature">
-            <h4>{{weather?.current?.temp | number: '1.0-0'}}</h4> <span>°C</span>
-        </div>
-    </div>
+  <app-city-banner></app-city-banner>
 
-    <div class="city-banner">
-        <div class="city-info">
-            <span class="material-icons">location_on</span>
-            <h4>{{countries?.capital}}</h4>
-        </div>
-        <picture class="city-banner__image">
-            <source media="(max-width: 768px)" srcset="{{photo?.image?.mobile}}">
-            <img src="{{photo?.image?.web}}" alt="{{photo?.attribution?.photographer}} {{photo?.attribution?.site}} {{photo?.attribution?.source}}">
-        </picture>
-    </div>
+  <div class="aditional-actions">
 
-    <div class="aditional-actions">
-        <section class="days-forecast">
-            <div class="section-title">
-                <p><strong>3 Days </strong> Forecast</p>
-            </div>
-            <ng-container *ngFor="let weatherDay of weather?.daily; let i = index">
-                <div *ngIf="i<=2" class="dailyCard">
-                    <ng-container *ngFor="let weatherImage of weatherDay?.weather">
-                        <img src="https://openweathermap.org/img/wn/{{weatherImage?.icon}}@2x.png" alt="{{weatherImage?.description}}">
-                    </ng-container>
-                    <div class="daily-captions">
-                        <h4>{{weatherDay?.dt  * 1000 | date:'EEEE'}}</h4>
-                        <ng-container *ngFor="let weatherDescription of weatherDay?.weather">
-                            <h5>{{weatherDescription?.description}}</h5>
-                        </ng-container>
-                    </div>
-                    <div class="daily-temp" [ngClass]="{'nextDay' : i == 0}">
-                        <h4>{{weatherDay?.temp.max | number: '1.0-0'}}° / {{weatherDay?.temp.min | number: '1.0-0'}}°</h4>
-                    </div>
-                </div>
-            </ng-container>
-        </section>
+    <app-days-forecast></app-days-forecast>
 
+    <app-places-to-visit></app-places-to-visit>
 
-        <section class="place-to-visit">
-            <div class="section-title">
-                <p><strong>Place to </strong> Visit</p>
-            </div>
-            <div class="visitPlace">
-                <div class="visitPlace__title">
-                    <span class="material-icons">location_on</span>
-                    <p><strong>{{countries?.capital}} <br> {{countries?.name?.common}}</strong></p>
-                </div>
-                <img src="{{photo?.image?.mobile}}" alt="{{photo?.attribution?.photographer}} {{photo?.attribution?.site}} {{photo?.attribution?.source}}">
-            </div>
-        </section>
+    <app-reviews></app-reviews>
 
-        <section class="reviews">
-            <div class="reviews__title">
-                <p>+ Top Reviews</p>
-                <img src="/assets/images/media/girl-1.jpg" alt="Primera Chica">
-                <img src="/assets/images/media/boy-1.jpg" alt="Primera Chica">
-                <img src="/assets/images/media/girl-2.jpg" alt="Primera Chica">
-                <span>8+</span>
-            </div>
-            <div class="feature-location">
-                <img src="/assets/images/media/art-museum.jpg" alt="Art museum">
-                <div class="visitPlace__title">
-                    <span class="material-icons">location_on</span>
-                    <p><strong>Art Science <br> Museum</strong></p>
-                </div>
-            </div>
-            <div class="feature-location feature-location-2">
-                <img src="/assets/images/media/fountain.jpg" alt="Fountain of Archibald">
-                <div class="visitPlace__title">
-                    <span class="material-icons">location_on</span>
-                    <p><strong>Fountain<br>of Archibald </strong></p>
-                </div>
-                <div class="button-add">
-                    +
-                </div>
-            </div>
-        </section>
+    <section class="locations-adder">
+      <app-weather-cards></app-weather-cards>
+    </section>
 
-        <section class="locations-adder">
-            <app-weather-cards></app-weather-cards>
-        </section>
-    </div>
+  </div>
 </section>
